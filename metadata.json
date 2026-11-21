@@ -1,0 +1,6 @@
+{
+  "name": "NSE Pulse",
+  "description": "Indian stock market watchlist, whole-NSE end-of-day scanner builder, and after-market alert desk powered by official NSE market data.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

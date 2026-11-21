@@ -1,0 +1,148 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Graphite ramp: neutral surfaces and text in both themes.
+     light: 50 page, 100 raised, 200 hairline, 500 muted, 600 secondary, 900 primary
+     dark: 950 page, 900 card, 800 raised, 500 muted, 400 secondary, 100 primary */
+  --color-slate-50: #fafafa;
+  --color-slate-100: #f1f1f2;
+  --color-slate-200: #e4e4e7;
+  --color-slate-300: #cdcdd2;
+  --color-slate-400: #a1a1a6;
+  --color-slate-500: #737378;
+  --color-slate-600: #55555a;
+  --color-slate-700: #3b3b3f;
+  --color-slate-800: #252527;
+  --color-slate-900: #1a1a1c;
+  --color-slate-950: #131314;
+  --color-ink: #0f0f10;
+
+  /* Accent: terminal amber. Selection, focus and the one number that matters. */
+  --color-accent-50: #fcf6e8;
+  --color-accent-100: #f8ecc9;
+  --color-accent-200: #f1d994;
+  --color-accent-300: #eac160;
+  --color-accent-400: #e6aa2e;
+  --color-accent-500: #c88c14;
+  --color-accent-600: #a57008;
+  --color-accent-700: #865a07;
+  --color-accent-800: #684506;
+  --color-accent-900: #4b3205;
+  --color-accent-950: #2b1c03;
+
+  /* Gain and loss, toned for the graphite ramp */
+  --color-emerald-400: #4cc38a;
+  --color-red-400: #f0686c;
+}
+
+@layer base {
+  :root {
+    --chart-grid: #f1f1f2;
+    --chart-axis: #e4e4e7;
+    --chart-tick: #737378;
+    --chart-ref: #cdcdd2;
+    --chart-crosshair: #cdcdd2;
+    --candle-up: #15803d;
+    --candle-down: #b91c1c;
+    --vol-up: #86efac;
+    --vol-down: #fca5a5;
+    --sma-line: #865a07;
+    --rsi-ob: #fca5a5;
+    --rsi-os: #86efac;
+    --rsi-line: #55555a;
+  }
+
+  html {
+    font-family: var(--font-sans);
+    color-scheme: light;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent-500);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  html.dark {
+    color-scheme: dark;
+    --chart-grid: #252527;
+    --chart-axis: #3b3b3f;
+    --chart-tick: #a1a1a6;
+    --chart-ref: #55555a;
+    --chart-crosshair: #737378;
+    --candle-up: #22c55e;
+    --candle-down: #f87171;
+    --vol-up: #166534;
+    --vol-down: #991b1b;
+    --sma-line: #e6aa2e;
+    --rsi-ob: #ef4444;
+    --rsi-os: #22c55e;
+    --rsi-line: #a1a1a6;
+  }
+
+  table,
+  .tabular-nums {
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+@layer base {
+  ::selection {
+    background: var(--color-accent-200);
+    color: var(--color-slate-900);
+  }
+
+  html.dark ::selection {
+    background: var(--color-accent-800);
+    color: var(--color-slate-50);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-slate-300);
+    border: 3px solid transparent;
+    border-radius: 8px;
+    background-clip: content-box;
+  }
+
+  html.dark ::-webkit-scrollbar-thumb {
+    background: var(--color-slate-700);
+    background-clip: content-box;
+  }
+
+  button,
+  [role='button'] {
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  button:active:not(:disabled) {
+    transform: scale(0.98);
+  }
+
+  button:disabled {
+    cursor: not-allowed;
+  }
+}
